@@ -1,11 +1,15 @@
 package com.java.project.run;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.java.project.model.paragon.Paragon;
 import com.java.project.model.paragon.ParagonDTO;
+import com.java.project.model.turek.Turek;
+import com.java.project.model.turek.TurekDTO;
 import com.java.project.service.KebabService;
 import com.java.project.service.ParagonService;
+import com.java.project.service.TurekService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 
@@ -22,6 +26,7 @@ public class Lab4 implements CommandLineRunner {
     public void run(String... args) throws Exception {
 //        kebab();
         paragon();
+        turas();
     }
 
     public void kebab() {
@@ -62,5 +67,24 @@ public class Lab4 implements CommandLineRunner {
         System.out.println("DTO: "+paragonDTO);
         System.out.println("CONVERTED TO ENTITY:"+saved);
         System.out.println("ENTITY RESTORED: "+restored);
+    }
+
+    public void turas(){
+        List<Turek> turkowie = TurekService.getTurekList();
+
+        Turek turek = turkowie.get(0);
+        System.out.println("Oryginalny stan: " + turek);
+
+        // Zapisanie snapshotu przed modyfikacją
+        TurekService.modyfikujTurek(turek);
+
+        // Modyfikacja obiektu
+        turek.setStanowisko("Manager");
+        System.out.println("Po modyfikacji: " + turek);
+
+        // Cofnięcie zmian
+        Turek przywroconyTurek = TurekService.cofnijZmiany(turek.getId());
+        System.out.println("Przywrócony stan: " + przywroconyTurek);
+
     }
 }
