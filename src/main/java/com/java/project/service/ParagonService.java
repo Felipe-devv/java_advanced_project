@@ -41,6 +41,8 @@ public class ParagonService {
 
         return List.of(paragon, paragon1);
     }
+
+
     public static List<ParagonDTO> convertToDTO(List<Paragon> paragons)
     {
         List<ParagonDTO> paragonDTOList = new ArrayList<>();

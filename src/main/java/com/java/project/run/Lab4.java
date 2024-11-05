@@ -1,11 +1,15 @@
 package com.java.project.run;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.java.project.model.paragon.Paragon;
 import com.java.project.model.paragon.ParagonDTO;
+import com.java.project.model.turek.Turek;
+import com.java.project.model.turek.TurekDTO;
 import com.java.project.service.KebabService;
 import com.java.project.service.ParagonService;
+import com.java.project.service.TurekService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 
@@ -22,6 +26,7 @@ public class Lab4 implements CommandLineRunner {
     public void run(String... args) throws Exception {
 //        kebab();
         paragon();
+        turas();
     }
 
     public void kebab() {
@@ -62,5 +67,25 @@ public class Lab4 implements CommandLineRunner {
         System.out.println("DTO: "+paragonDTO);
         System.out.println("CONVERTED TO ENTITY:"+saved);
         System.out.println("ENTITY RESTORED: "+restored);
+    }
+
+    public void turas(){
+        List<Turek> turkowie = TurekService.getTurekList();
+
+        // Mapowanie obiektów Turek na TurekDTO
+        List<TurekDTO> turekDTOList = turkowie.stream()
+                .map(TurekDTO::new)
+                .toList();
+
+
+        System.out.println("Lista pracowników sklepu kebabowego:");
+        for (TurekDTO turekDTO : turekDTOList) {
+            System.out.println("ID: " + turekDTO.getId());
+            System.out.println("Imię: " + turekDTO.getImie());
+            System.out.println("Nazwisko: " + turekDTO.getNazwisko());
+            System.out.println("Stanowisko: " + turekDTO.getStanowisko());
+            System.out.println("Stawka godzinowa: " + turekDTO.getStawkaGodzinowa());
+            System.out.println("---------------------------------");
+        }
     }
 }

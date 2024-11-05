@@ -35,6 +35,7 @@ public class KebabService {
         
         return kebabs;
     }
+
     public static void outputAllKebabs(List<Kebab> kebabs) {
         for(Kebab kebab : kebabs) {
             System.out.println(kebab);
