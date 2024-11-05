@@ -22,6 +22,7 @@ public class Lab4 implements CommandLineRunner {
     @Autowired
     private KebabService kebabService;
 
+
     @Override
     public void run(String... args) throws Exception {
 //        kebab();
