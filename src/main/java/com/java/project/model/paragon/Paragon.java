@@ -1,5 +1,6 @@
-package com.java.project.model;
+package com.java.project.model.paragon;
 
+import com.java.project.model.kebab.Kebab;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,6 +21,13 @@ public class Paragon {
     private List<Kebab> kebaby;
     private Double suma ;
 
+    public Paragon(String miasto, String kodPocztowy, List<Kebab> kebaby) {
+        this.miasto = miasto;
+        this.kodPocztowy = kodPocztowy;
+        this.kebaby = kebaby;
+        this.suma = calcSuma(kebaby);
+    }
+
     public Paragon(String miasto, String kodPocztowy, List<Kebab> kebaby, Double suma) {
         this.miasto = miasto;
         this.kodPocztowy = kodPocztowy;
@@ -33,5 +41,10 @@ public class Paragon {
             kebaby = new ArrayList<>();
         }
         kebaby.add(kebab);
+    }
+
+    public static double calcSuma(List<Kebab> kebaby)
+    {
+        return kebaby.stream().mapToDouble(Kebab::getPrice).sum();
     }
 }
