@@ -1,21 +1,19 @@
 package com.java.project.run;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
-import com.java.project.model.paragon.Paragon;
-import com.java.project.model.paragon.ParagonDTO;
-import com.java.project.model.turek.Turek;
-import com.java.project.model.turek.TurekDTO;
-import com.java.project.service.KebabService;
-import com.java.project.service.ParagonService;
-import com.java.project.service.TurekService;
+import com.java.project.paragon.Paragon;
+import com.java.project.paragon.ParagonDTO;
+import com.java.project.turek.Turek;
+import com.java.project.kebab.KebabService;
+import com.java.project.paragon.ParagonService;
+import com.java.project.turek.TurekService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 
-import com.java.project.model.kebab.Kebab;
-import com.java.project.model.kebab.KebabDTO;
-import com.java.project.model.kebab.KebabStateRestorer;
+import com.java.project.kebab.Kebab;
+import com.java.project.kebab.KebabDTO;
+import com.java.project.kebab.KebabStateRestorer;
 
 public class Lab4 implements CommandLineRunner {
 

@@ -1,4 +1,4 @@
-package com.java.project.model.kebab;
+package com.java.project.kebab;
 
 public class KebabStateRestorer {
     private final KebabDTO kebabDTO;

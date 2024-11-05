@@ -1,6 +1,6 @@
-package com.java.project.model.paragon;
+package com.java.project.paragon;
 
-import com.java.project.model.kebab.Kebab;
+import com.java.project.kebab.Kebab;
 import lombok.Data;
 
 import java.util.ArrayList;

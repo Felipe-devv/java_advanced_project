@@ -1,11 +1,9 @@
-package com.java.project.service;
+package com.java.project.kebab;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-
-import com.java.project.model.kebab.Kebab;
 
 @Service
 public class KebabService {
