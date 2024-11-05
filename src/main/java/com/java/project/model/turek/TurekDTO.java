@@ -19,6 +19,7 @@ public class TurekDTO {
         this.stawkaGodzinowa = turek.getStawkaGodzinowa();
     }
 
+
     // Metoda przywracająca encję z DTO
     public Turek toEntity() {
         return Turek.builder()
@@ -29,4 +30,10 @@ public class TurekDTO {
                 .stawkaGodzinowa(stawkaGodzinowa)
                 .build();
     }
+    // snapshot do utworzenia kopii TurekDTO
+    public TurekDTO snapshot() {
+        return new TurekDTO(this.toEntity());
+    }
+
+
 }

@@ -72,20 +72,19 @@ public class Lab4 implements CommandLineRunner {
     public void turas(){
         List<Turek> turkowie = TurekService.getTurekList();
 
-        // Mapowanie obiektów Turek na TurekDTO
-        List<TurekDTO> turekDTOList = turkowie.stream()
-                .map(TurekDTO::new)
-                .toList();
+        Turek turek = turkowie.get(0);
+        System.out.println("Oryginalny stan: " + turek);
 
+        // Zapisanie snapshotu przed modyfikacją
+        TurekService.modyfikujTurek(turek);
 
-        System.out.println("Lista pracowników sklepu kebabowego:");
-        for (TurekDTO turekDTO : turekDTOList) {
-            System.out.println("ID: " + turekDTO.getId());
-            System.out.println("Imię: " + turekDTO.getImie());
-            System.out.println("Nazwisko: " + turekDTO.getNazwisko());
-            System.out.println("Stanowisko: " + turekDTO.getStanowisko());
-            System.out.println("Stawka godzinowa: " + turekDTO.getStawkaGodzinowa());
-            System.out.println("---------------------------------");
-        }
+        // Modyfikacja obiektu
+        turek.setStanowisko("Manager");
+        System.out.println("Po modyfikacji: " + turek);
+
+        // Cofnięcie zmian
+        Turek przywroconyTurek = TurekService.cofnijZmiany(turek.getId());
+        System.out.println("Przywrócony stan: " + przywroconyTurek);
+
     }
 }
