@@ -1,10 +1,8 @@
-package com.java.project.service;
+package com.java.project.paragon;
 
 
-import com.java.project.model.kebab.Kebab;
-import com.java.project.model.paragon.Paragon;
-import com.java.project.model.paragon.ParagonDTO;
-import lombok.RequiredArgsConstructor;
+import com.java.project.kebab.Kebab;
+import com.java.project.kebab.KebabService;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.java.project.model.turek;
+package com.java.project.turek;
 
 import lombok.Data;
 

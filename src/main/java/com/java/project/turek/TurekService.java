@@ -1,7 +1,4 @@
-package com.java.project.service;
-
-import com.java.project.model.turek.Turek;
-import com.java.project.model.turek.TurekDTO;
+package com.java.project.turek;
 
 import java.util.ArrayList;
 import java.util.HashMap;

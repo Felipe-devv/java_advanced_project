@@ -1,6 +1,5 @@
-package com.java.project.model.kebab;
+package com.java.project.kebab;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
