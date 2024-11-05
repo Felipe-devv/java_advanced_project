@@ -1,4 +1,9 @@
 spring:
+  datasource: #database connection
+    url: jdbc:mysql://localhost:3307/kebabownia
+    username: user
+    password: pass
+
   application:
    name: project
   main:
