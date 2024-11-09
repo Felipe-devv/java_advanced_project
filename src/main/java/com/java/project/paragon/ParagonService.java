@@ -1,55 +1,41 @@
 package com.java.project.paragon;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import com.java.project.kebab.Kebab;
-import com.java.project.kebab.KebabService;
-
-import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class ParagonService {
 
-    public static List<Paragon> getParagonsList() {
+    @Autowired
+    private ParagonRepository paragonRepository;
 
-        List<Kebab> kebabList = KebabService.returnListOfKebabsMadeWithBuilder();
-        Paragon paragon = Paragon.builder()
-                .id(1)
-                .miasto("Lublin")
-                .kodPocztowy("20-200")
-                .kebaby(kebabList)
-                .suma(Paragon.calcSuma(kebabList))
-                .build();
 
-        kebabList.add(Kebab.builder()
-                .id(3)
-                .name("Lawasz")
-                .size("XL")
-                .meat("Mieszane")
-                .sauce("Super ostry")
-                .price(27.99)
-                .build());
+    public List<ParagonDTO> getAllParagones() {
 
-        Paragon paragon1 = Paragon.builder()
-                .id(2)
-                .miasto("Wrocałw")
-                .kodPocztowy("28-700")
-                .kebaby(kebabList)
-                .suma(Paragon.calcSuma(kebabList))
-                .build();
+        var paragonList = paragonRepository.getAllParagons();
 
-        return List.of(paragon, paragon1);
+        return paragonList.stream().map(ParagonDTO::new).toList();
     }
 
+    public ParagonDTO getParagonById(int paragonId) {
 
-    public static List<ParagonDTO> convertToDTO(List<Paragon> paragons)
-    {
-        List<ParagonDTO> paragonDTOList = new ArrayList<>();
-        for (Paragon paragon : paragons) {
-            ParagonDTO dto = new ParagonDTO(paragon);
-//            dto.setCopy(paragon);
-            paragonDTOList.add(dto);
-        }
-        return paragonDTOList;
+        return new ParagonDTO(paragonRepository.getParagonById(paragonId));
     }
+
+    public boolean insertParagon(ParagonDTO paragon) {
+
+        return paragonRepository.insertParagon(paragon.toParagonEntity());
+    }
+
+    public boolean updateParagon(ParagonDTO paragon) {
+        return paragonRepository.updateParagon(paragon.toParagonEntity());
+    }
+
+    public boolean deleteParagon(int paragonId) {
+        return paragonRepository.deleteParagon(paragonId);
+    }
+
 
 }
