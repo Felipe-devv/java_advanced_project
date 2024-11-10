@@ -1,17 +1,15 @@
 package com.java.project.paragon;
 
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Data
+@Getter
 @NoArgsConstructor
 public class ParagonDTO {
 
     private Integer id;
     private String miasto;
     private String kodPocztowy;
-//    private Kebab kebab;
-//    private Turek turek;
     private Integer kebab;
     private Integer turek;
     private Double suma;

@@ -27,7 +27,7 @@ public class ParagonRepository {
 
     }
 
-    public boolean insertParagon(Paragon p) {
+    public boolean insertParagon(ParagonPOJO p) {
 
         var sql = "INSERT INTO Paragon ( Kebab_id,Turek_id,miasto, kod_pocztowy, suma) VALUES (?, ?, ?, ?, ?)";
 
@@ -37,11 +37,11 @@ public class ParagonRepository {
 
     }
 
-    public boolean updateParagon(Paragon p) {
+    public boolean updateParagon(ParagonPOJO p,int paragonId) {
 
         var sql = "UPDATE Paragon SET Kebab_id = ?, Turek_id = ?, miasto = ?, kod_pocztowy = ?, suma = ? WHERE id = ?";
 
-        int zmienonychRekordow = jdbcTemplate.update(sql, p.getKebab(), p.getTurek(), p.getMiasto(), p.getKodPocztowy(), p.getSuma(),p.getId());
+        int zmienonychRekordow = jdbcTemplate.update(sql, p.getKebab(), p.getTurek(), p.getMiasto(), p.getKodPocztowy(), p.getSuma(),paragonId);
 
         return zmienonychRekordow >= 1;
     }

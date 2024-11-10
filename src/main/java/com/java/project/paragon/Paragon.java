@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -14,8 +15,6 @@ public class Paragon {
     private Integer id;
     private String miasto;
     private String kodPocztowy;
-//    private Turek turek;
-//    private Kebab kebab;
     private Integer turek;
     private Integer kebab;
     private Integer podatek;
