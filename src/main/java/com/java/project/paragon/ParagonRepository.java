@@ -15,13 +15,13 @@ public class ParagonRepository {
 
     public List<Paragon> getAllParagons() {
 
-        return jdbcTemplate.query("SELECT id,Turek_id,Kebab_id,miasto,kod_pocztowy,suma FROM Paragon", BeanPropertyRowMapper.newInstance(Paragon.class));
+        return jdbcTemplate.query("SELECT id,Turek_id AS turek,Kebab_id AS kebab,miasto,kod_pocztowy,suma FROM Paragon", BeanPropertyRowMapper.newInstance(Paragon.class));
 
     }
 
     public Paragon getParagonById(int id) {
 
-        var sql = "SELECT id,Turek_id,Kebab_id,miasto,kod_pocztowy,suma FROM Paragon WHERE id = ?";
+        var sql = "SELECT id,Turek_id AS turek,Kebab_id AS kebab,miasto,kod_pocztowy,suma FROM Paragon WHERE id = ?";
 
         return jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Paragon.class), id);
 

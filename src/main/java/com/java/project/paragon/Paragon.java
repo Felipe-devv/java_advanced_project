@@ -26,14 +26,6 @@ public class Paragon {
     private Integer podatek;
     private Double suma ;
 
-//    public Paragon(String miasto, String kodPocztowy, Integer kebab, Integer podatek) {
-//        this.miasto = miasto;
-//        this.kodPocztowy = kodPocztowy;
-//        this.kebab = kebab;
-//        this.podatek = podatek;
-//        this.suma = kebab.getPrice()*podatek;
-//    }
-
     public Paragon(String miasto, String kodPocztowy, Integer kebab,Integer turek, Double suma) {
         this.miasto = miasto;
         this.kodPocztowy = kodPocztowy;
