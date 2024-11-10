@@ -6,23 +6,24 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/paragones")
 public class ParagonController {
 
     @Autowired
     private ParagonService paragonService;
 
-    @GetMapping("/paragones")
+    @GetMapping("/all")
     public List<ParagonDTO> getParagons() {
         return paragonService.getAllParagones();
     }
 
-    @GetMapping("/paragones/{paragonId}")
+    @GetMapping("/{paragonId}")
     public ParagonDTO getParagonById(@PathVariable int paragonId) {
         return paragonService.getParagonById(paragonId);
     }
 
-    @PostMapping("/paragones")
-    public String createParagon(@RequestBody ParagonDTO paragon) {
+    @PostMapping("")
+    public String createParagon(@RequestBody ParagonPOJO paragon) {
 
         if(paragonService.insertParagon(paragon))
         {
@@ -31,14 +32,14 @@ public class ParagonController {
         return "Nie udało się dodać paragonu";
     }
 
-    @PutMapping("/paragones")
-    public String updateParagon( @RequestBody ParagonDTO paragon) {
+    @PutMapping("/{paragonId}")
+    public String updateParagon( @RequestBody ParagonPOJO paragon,@PathVariable int paragonId) {
 
-        if(paragonService.updateParagon(paragon)){return "Paragon zaaktualizowany";}
+        if(paragonService.updateParagon(paragon,paragonId)){return "Paragon zaaktualizowany";}
         return "Nie udało się zaaktualizować paragonu";
     }
 
-    @DeleteMapping("/paragones/{paragonId}")
+    @DeleteMapping("/{paragonId}")
     public String deleteParagon(@PathVariable int paragonId) {
 
         if(paragonService.deleteParagon(paragonId)){return "Paragon usunięty";}

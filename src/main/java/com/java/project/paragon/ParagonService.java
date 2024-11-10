@@ -24,13 +24,13 @@ public class ParagonService {
         return new ParagonDTO(paragonRepository.getParagonById(paragonId));
     }
 
-    public boolean insertParagon(ParagonDTO paragon) {
+    public boolean insertParagon(ParagonPOJO paragon) {
 
-        return paragonRepository.insertParagon(paragon.toParagonEntity());
+        return paragonRepository.insertParagon(paragon);
     }
 
-    public boolean updateParagon(ParagonDTO paragon) {
-        return paragonRepository.updateParagon(paragon.toParagonEntity());
+    public boolean updateParagon(ParagonPOJO paragon,int paragonId) {
+        return paragonRepository.updateParagon(paragon,paragonId);
     }
 
     public boolean deleteParagon(int paragonId) {
