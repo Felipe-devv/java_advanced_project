@@ -1,12 +1,7 @@
 package com.java.project.paragon;
 
-import com.java.project.kebab.Kebab;
-import com.java.project.turek.Turek;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Data
 @NoArgsConstructor
