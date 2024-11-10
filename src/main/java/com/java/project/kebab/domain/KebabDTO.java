@@ -1,11 +1,9 @@
-package com.java.project.kebab;
+package com.java.project.kebab.domain;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Getter
-@Setter
 @NoArgsConstructor
 public class KebabDTO {
     private Integer id;
@@ -25,13 +23,13 @@ public class KebabDTO {
     }
 
     public Kebab toEntity() {
-        Kebab kebab = new Kebab();
-        kebab.setId(this.id);
-        kebab.setName(this.name);
-        kebab.setSize(this.size);
-        kebab.setMeat(this.meat);
-        kebab.setSauce(this.sauce);
-        kebab.setPrice(this.price);
-        return kebab;
+        return Kebab.builder()
+                .id(this.id)
+                .name(this.name)
+                .size(this.size)
+                .meat(this.meat)
+                .sauce(this.sauce)
+                .price(this.price)
+                .build();
     }
 }

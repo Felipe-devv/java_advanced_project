@@ -9,7 +9,8 @@ services:
       MYSQL_ROOT_PASSWORD: passRoot
     volumes:
       - db_data:/var/lib/mysql
-      - ./sql:/docker-entrypoint-initdb.d
+      - ./sql/kebabownia.sql:/docker-entrypoint-initdb.d/1-kebabownia.sql
+      - ./sql/insert_data.sql:/docker-entrypoint-initdb.d/2-insert_data.sql
     ports:
       - "3307:3306"
     healthcheck:
