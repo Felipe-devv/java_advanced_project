@@ -1,4 +1,4 @@
-package com.java.project.kebab;
+package com.java.project.kebab.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

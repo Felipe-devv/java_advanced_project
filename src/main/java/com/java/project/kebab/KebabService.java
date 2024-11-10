@@ -3,40 +3,38 @@ package com.java.project.kebab;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.java.project.kebab.domain.Kebab;
+import com.java.project.kebab.domain.KebabDTO;
+import com.java.project.kebab.payload.AddUpdateKebabRequest;
 
 @Service
 public class KebabService {
 
-    public static List<Kebab> returnListOfKebabsMadeWithBuilder(){
-        List<Kebab> kebabs = new ArrayList<>();
-        
-        Kebab kebab1 = Kebab.builder()
-                .id(1)
-                .name("Pita")
-                .size("XL")
-                .meat("Chicken")
-                .sauce("Kurczak")
-                .price(22.99)
-                .build();
-        Kebab kebab2 = Kebab.builder()
-                .id(2)
-                .name("Falafel")
-                .size("Duży")
-                .meat("Kotleciki z ciecierzycy")
-                .sauce("Ostry")
-                .price(20.99)
-                .build();
-        
-        kebabs.add(kebab1);
-        kebabs.add(kebab2);
-        
-        return kebabs;
+    @Autowired
+    private KebabRepository kebabRepository;
+
+    public List<KebabDTO> getAllKebabs() {
+        List<Kebab> kebabs = kebabRepository.getAllKebabs();
+        return kebabs.stream().map(KebabDTO::new).toList();
     }
 
-    public static void outputAllKebabs(List<Kebab> kebabs) {
-        for(Kebab kebab : kebabs) {
-            System.out.println(kebab);
-        }
+    public KebabDTO getKebabById(Integer id) {
+        return new KebabDTO(kebabRepository.getKebabById(id));
     }
+
+    public void insertKebab(AddUpdateKebabRequest request) {
+        kebabRepository.insertKebab(request);
+    }
+
+    public void updateKebab(AddUpdateKebabRequest request, Integer id) {
+        kebabRepository.updateKebab(request, id);
+    }
+
+    public void deleteKebab(Integer id) {
+        kebabRepository.deleteKebab(id);
+    }
+
 }
