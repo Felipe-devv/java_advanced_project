@@ -1,6 +1,7 @@
 package com.java.project.paragon;
 
 import com.java.project.kebab.Kebab;
+import com.java.project.turek.Turek;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,33 +19,19 @@ public class Paragon {
     private Integer id;
     private String miasto;
     private String kodPocztowy;
-    private List<Kebab> kebaby;
+//    private Turek turek;
+//    private Kebab kebab;
+    private Integer turek;
+    private Integer kebab;
+    private Integer podatek;
     private Double suma ;
 
-    public Paragon(String miasto, String kodPocztowy, List<Kebab> kebaby) {
+    public Paragon(String miasto, String kodPocztowy, Integer kebab,Integer turek, Double suma) {
         this.miasto = miasto;
         this.kodPocztowy = kodPocztowy;
-        this.kebaby = kebaby;
-        this.suma = calcSuma(kebaby);
-    }
-
-    public Paragon(String miasto, String kodPocztowy, List<Kebab> kebaby, Double suma) {
-        this.miasto = miasto;
-        this.kodPocztowy = kodPocztowy;
-        this.kebaby = kebaby;
+        this.kebab = kebab;
+        this.turek = turek;
         this.suma = suma;
     }
 
-    public void addKebab(Kebab kebab) {
-        if(kebaby.isEmpty())
-        {
-            kebaby = new ArrayList<>();
-        }
-        kebaby.add(kebab);
-    }
-
-    public static double calcSuma(List<Kebab> kebaby)
-    {
-        return kebaby.stream().mapToDouble(Kebab::getPrice).sum();
-    }
 }

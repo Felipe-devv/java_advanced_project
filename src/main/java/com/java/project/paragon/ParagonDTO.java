@@ -1,29 +1,33 @@
 package com.java.project.paragon;
 
 import com.java.project.kebab.Kebab;
+import com.java.project.turek.Turek;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
+@NoArgsConstructor
 public class ParagonDTO {
 
     private Integer id;
     private String miasto;
     private String kodPocztowy;
-    private List<Kebab> kebaby;
+//    private Kebab kebab;
+//    private Turek turek;
+    private Integer kebab;
+    private Integer turek;
     private Double suma;
-    private Paragon copy;
 
     public ParagonDTO(Paragon paragon) {
         this.id = paragon.getId();
         this.miasto = paragon.getMiasto();
         this.kodPocztowy = paragon.getKodPocztowy();
-        this.kebaby = paragon.getKebaby();
+        this.kebab = paragon.getKebab();
+        this.turek = paragon.getTurek();
         this.suma = paragon.getSuma();
-        this.copy=paragon;
-
     }
 
     public Paragon toParagonEntity() {
@@ -31,18 +35,12 @@ public class ParagonDTO {
                 .id(this.id)
                 .miasto(this.miasto)
                 .kodPocztowy(this.kodPocztowy)
-                .kebaby(this.kebaby)
+                .kebab(this.kebab)
+                .turek(this.turek)
                 .suma(this.suma)
                 .build();
     }
 
-
-    public void addKebab(Kebab kebab) {
-        if (this.kebaby.isEmpty()) {
-            kebaby = new ArrayList<>();
-        }
-        kebaby.add(kebab);
-    }
 
     @Override
     public String toString() {
@@ -50,7 +48,7 @@ public class ParagonDTO {
                 "id=" + id +
                 ", miasto='" + miasto + '\'' +
                 ", kodPocztowy='" + kodPocztowy + '\'' +
-                ", kebaby=" + kebaby +
+                ", kebab=" + kebab +
                 ", suma=" + suma +
                 '}';
     }
