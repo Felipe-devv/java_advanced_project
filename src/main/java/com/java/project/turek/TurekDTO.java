@@ -1,8 +1,12 @@
 package com.java.project.turek;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Data
+@Getter
+@NoArgsConstructor
 public class TurekDTO {
     private Long id;
     private String imie;
@@ -31,9 +35,9 @@ public class TurekDTO {
                 .build();
     }
     // snapshot do utworzenia kopii TurekDTO
-    public TurekDTO snapshot() {
-        return new TurekDTO(this.toEntity());
-    }
+//    public TurekDTO snapshot() {
+//        return new TurekDTO(this.toEntity());
+//    }
 
 
 }

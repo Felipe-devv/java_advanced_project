@@ -13,4 +13,5 @@ public class Turek {
     private String nazwisko;
     private String stanowisko;
     private Double stawkaGodzinowa;
+//    private Boolean active;
 }
