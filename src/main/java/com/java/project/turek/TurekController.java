@@ -46,6 +46,10 @@ public class TurekController {
         return "Failed to delete Turek";
     }
 
+    @PutMapping("/deactivate/{id}")
+    public boolean deactivateTurek(@PathVariable Long id) {
+        return turekService.deactivateTurek(id);
+    }
 //    @PutMapping("/deactivate/{id}")
 //    public String deactivateTurek(@PathVariable Long id) {
 //        if (turekService.deactivateTurek(id)) {

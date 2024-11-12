@@ -12,11 +12,11 @@ public class TurekRepository {
     private JdbcTemplate jdbcTemplate;
 
     public List<Turek> getAllTureks() {
-        return jdbcTemplate.query("SELECT id, imie, nazwisko, stanowisko, stawka_godzinowa FROM Turek", BeanPropertyRowMapper.newInstance(Turek.class));
+        return jdbcTemplate.query("SELECT id, imie, nazwisko, stanowisko, stawka_godzinowa FROM Turek WHERE status = 1", BeanPropertyRowMapper.newInstance(Turek.class));
     }
 
     public Turek getTurekById(Long id) {
-        var sql = "SELECT id, imie, nazwisko, stanowisko, stawka_godzinowa FROM Turek WHERE id = ?";
+        var sql = "SELECT id, imie, nazwisko, stanowisko, stawka_godzinowa FROM Turek WHERE id = ? AND status = 1";
         return jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Turek.class), id);
     }
 
@@ -27,13 +27,19 @@ public class TurekRepository {
     }
 
     public boolean updateTurek(Turek turek, Long id) {
-        var sql = "UPDATE Turek SET imie = ?, nazwisko = ?, stanowisko = ?, stawka_godzinowa = ? WHERE id = ?";
+        var sql = "UPDATE Turek SET imie = ?, nazwisko = ?, stanowisko = ?, stawka_godzinowa = ? WHERE id = ? AND status = 1";
         int zmienionychRekordow = jdbcTemplate.update(sql, turek.getImie(), turek.getNazwisko(), turek.getStanowisko(), turek.getStawkaGodzinowa(), id);
         return zmienionychRekordow >= 1;
     }
 
     public boolean deleteTurek(Long id) {
         var sql = "DELETE FROM Turek WHERE id = ?";
+        int zmienionychRekordow = jdbcTemplate.update(sql, id);
+        return zmienionychRekordow == 1;
+    }
+
+    public boolean deactivateTurek(Long id) {
+        var sql = "UPDATE Turek SET status = 0 WHERE id = ? AND status = 1";
         int zmienionychRekordow = jdbcTemplate.update(sql, id);
         return zmienionychRekordow == 1;
     }

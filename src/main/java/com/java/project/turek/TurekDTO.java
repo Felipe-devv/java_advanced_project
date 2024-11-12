@@ -13,6 +13,7 @@ public class TurekDTO {
     private String nazwisko;
     private String stanowisko;
     private Double stawkaGodzinowa;
+    private int status;
 
     // Konstruktor mapujący encję na DTO
     public TurekDTO(Turek turek) {
@@ -21,6 +22,7 @@ public class TurekDTO {
         this.nazwisko = turek.getNazwisko();
         this.stanowisko = turek.getStanowisko();
         this.stawkaGodzinowa = turek.getStawkaGodzinowa();
+        this.status = turek.getStatus();
     }
 
 
@@ -32,6 +34,7 @@ public class TurekDTO {
                 .nazwisko(nazwisko)
                 .stanowisko(stanowisko)
                 .stawkaGodzinowa(stawkaGodzinowa)
+                .status(status)
                 .build();
     }
     // snapshot do utworzenia kopii TurekDTO

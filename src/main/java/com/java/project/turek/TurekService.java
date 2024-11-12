@@ -33,9 +33,10 @@ public class TurekService {
         return turekRepository.deleteTurek(id);
     }
 
-//    public boolean deactivateTurek(Long id) {
-//        return turekRepository.deactivateTurek(id);
-//    }
+    public boolean deactivateTurek(Long id) {
+        return turekRepository.deactivateTurek(id);
+    }
+
 
 
 //
