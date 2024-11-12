@@ -21,7 +21,7 @@
 
 LOCK TABLES `Kebab` WRITE;
 /*!40000 ALTER TABLE `Kebab` DISABLE KEYS */;
-INSERT INTO `Kebab` VALUES (1,'Pita','XL',23.99,'Kurczak','Pikantny'),(2,'Falafel','Duzy',21,'Kotleciki z ciecierzycy','Mieszany');
+INSERT INTO `Kebab` VALUES (1,'Pita','XL',23.99,'Kurczak','Pikantny',1),(2,'Falafel','Duzy',21,'Kotleciki z ciecierzycy','Mieszany',1);
 /*!40000 ALTER TABLE `Kebab` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -41,7 +41,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `Turek` WRITE;
 /*!40000 ALTER TABLE `Turek` DISABLE KEYS */;
-INSERT INTO `Turek` VALUES (1,'Ahmet','Ylmaz','Kucharz','25.50'),(2,'Mehmet','Demir','Kelner','25.00');
+INSERT INTO `Turek` VALUES (1,'Ahmet','Ylmaz','Kucharz','25.50',1),(2,'Mehmet','Demir','Kelner','25.00',1);
 /*!40000 ALTER TABLE `Turek` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

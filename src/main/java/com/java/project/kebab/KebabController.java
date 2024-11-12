@@ -1,5 +1,6 @@
 package com.java.project.kebab;
 
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -66,5 +67,15 @@ public class KebabController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }   
+
+    @DeleteMapping("/deactivate/{kebabID}")
+    public ResponseEntity<?> deactivateKebab(@PathVariable Integer kebabID) {
+        try{
+            kebabService.deactivateKebab(kebabID);
+            return ResponseEntity.ok("Kebab deactivated");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
 
 }

@@ -20,6 +20,7 @@ public class Kebab {
     private String meat;
     private String sauce;
     private double price;
+    private int isActive;
 
     public boolean isValid() {
         return id != null && name != null && !name.isEmpty() && size != null && !size.isEmpty() && meat != null && !meat.isEmpty() && sauce != null && !sauce.isEmpty() &&  price >0;

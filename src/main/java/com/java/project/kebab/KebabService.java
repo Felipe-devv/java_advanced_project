@@ -36,4 +36,8 @@ public class KebabService {
         kebabRepository.deleteKebab(id);
     }
 
+    public void deactivateKebab(Integer id) {
+        kebabRepository.deactivateKebab(id);
+    }
+
 }
