@@ -39,6 +39,7 @@ CREATE TABLE IF NOT EXISTS `Turek` (
   `nazwisko` VARCHAR(45) NOT NULL,
   `stanowisko` VARCHAR(45) NOT NULL,
   `stawka_godzinowa` VARCHAR(45) NOT NULL,
+  `status` VARCHAR(45) DEFAULT 1,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `idTurek_UNIQUE` (`id` ASC) VISIBLE)
 ENGINE = InnoDB;
