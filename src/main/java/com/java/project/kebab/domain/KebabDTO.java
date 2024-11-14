@@ -11,7 +11,7 @@ public class KebabDTO {
     private String size;
     private String meat;
     private String sauce;
-    private double price;
+    private Double price;
 
     public KebabDTO(Kebab kebab) {
         this.id = kebab.getId();
