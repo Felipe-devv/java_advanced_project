@@ -14,27 +14,41 @@ public class ParagonService {
 
     public List<ParagonDTO> getAllParagones() {
 
-        var paragonList = paragonRepository.getAllParagons();
+        var paragonList = paragonRepository.findAll();
 
         return paragonList.stream().map(ParagonDTO::new).toList();
     }
 
     public ParagonDTO getParagonById(int paragonId) {
 
-        return new ParagonDTO(paragonRepository.getParagonById(paragonId));
+        return new ParagonDTO(paragonRepository.findById(paragonId).orElseThrow(()->new RuntimeException("Paragon not found")));
     }
 
-    public boolean insertParagon(ParagonPOJO paragon) {
+    public Paragon insertParagon(ParagonPOJO paragon) {
 
-        return paragonRepository.insertParagon(paragon);
+        return paragonRepository.saveAndFlush(
+                Paragon.builder()
+                        .kebab(paragon.getKebab())
+                        .turek(paragon.getTurek())
+                        .suma(paragon.getSuma())
+                        .kodPocztowy(paragon.getKodPocztowy())
+                        .miasto(paragon.getMiasto())
+                .build());
     }
 
-    public boolean updateParagon(ParagonPOJO paragon,int paragonId) {
-        return paragonRepository.updateParagon(paragon,paragonId);
+    public Paragon updateParagon(ParagonPOJO paragon,int paragonId) {
+
+        Paragon existingParagon = paragonRepository.findById(paragonId).orElseThrow(()->new RuntimeException("Paragon not found"));
+        existingParagon.setKebab(paragon.getKebab());
+        existingParagon.setTurek(paragon.getTurek());
+        existingParagon.setSuma(paragon.getSuma());
+        existingParagon.setMiasto(paragon.getMiasto());
+        existingParagon.setKodPocztowy(paragon.getKodPocztowy());
+        return paragonRepository.saveAndFlush(existingParagon);
     }
 
-    public boolean deleteParagon(int paragonId) {
-        return paragonRepository.deleteParagon(paragonId);
+    public void deleteParagon(int paragonId) {
+        paragonRepository.delete(paragonRepository.findById(paragonId).orElseThrow(()->new RuntimeException("Paragon not found")));
     }
 
 
