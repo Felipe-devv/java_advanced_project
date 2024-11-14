@@ -14,7 +14,7 @@ public class ParagonPOJO {
     private String miasto;
     private String kodPocztowy;
     private Integer kebab;
-    private Long turek;
+    private Integer turek;
     private Double suma;
 
 }

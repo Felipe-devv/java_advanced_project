@@ -13,7 +13,7 @@ import lombok.*;
 public class Turek {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     @Column(name = "imie")
     private String imie;
     @Column(name = "nazwisko")

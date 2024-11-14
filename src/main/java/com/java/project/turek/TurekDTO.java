@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class TurekDTO {
-    private Long id;
+    private int id;
     private String imie;
     private String nazwisko;
     private String stanowisko;

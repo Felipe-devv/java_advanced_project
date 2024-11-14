@@ -18,7 +18,7 @@ public class TurekController {
     }
 
     @GetMapping("/{id}")
-    public TurekDTO getTurekById(@PathVariable Long id) {
+    public TurekDTO getTurekById(@PathVariable int id) {
         return turekService.getTurekById(id);
     }
 
@@ -31,7 +31,7 @@ public class TurekController {
     }
 
     @PutMapping("/{id}")
-    public String updateTurek(@RequestBody TurekDTO turekDTO, @PathVariable Long id) {
+    public String updateTurek(@RequestBody TurekDTO turekDTO, @PathVariable int id) {
         if (turekService.updateTurek(turekDTO.toEntity(), id) != null) {
             return "Turek updated";
         }
@@ -39,7 +39,7 @@ public class TurekController {
     }
 
     @DeleteMapping("/{id}")
-    public String deleteTurek(@PathVariable Long id) {
+    public String deleteTurek(@PathVariable int id) {
 
         try {
             turekService.deleteTurek(id);
@@ -51,7 +51,7 @@ public class TurekController {
     }
 
     @PutMapping("/deactivate/{id}")
-    public String deactivateTurek(@PathVariable Long id) {
+    public String deactivateTurek(@PathVariable int id) {
         if (turekService.deactivateTurek(id) != null) {
             return "Turek updated";
         }
