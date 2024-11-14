@@ -11,7 +11,7 @@ public class ParagonDTO {
     private String miasto;
     private String kodPocztowy;
     private Integer kebab;
-    private Integer turek;
+    private Long turek;
     private Double suma;
 
     public ParagonDTO(Paragon paragon) {

@@ -23,7 +23,7 @@ public class Paragon {
     private String kodPocztowy;
 
     @Column(name = "Turek_id")
-    private Integer turek;
+    private Long turek;
 
     @Column(name = "Kebab_id")
     private Integer kebab;
@@ -31,7 +31,7 @@ public class Paragon {
     @Column(name = "suma")
     private Double suma ;
 
-    public Paragon(String miasto, String kodPocztowy, Integer kebab,Integer turek, Double suma) {
+    public Paragon(String miasto, String kodPocztowy, Integer kebab,Long turek, Double suma) {
         this.miasto = miasto;
         this.kodPocztowy = kodPocztowy;
         this.kebab = kebab;
