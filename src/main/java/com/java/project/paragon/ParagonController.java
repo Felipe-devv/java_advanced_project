@@ -14,6 +14,7 @@ public class ParagonController {
 
     @GetMapping("/all")
     public List<ParagonDTO> getParagons() {
+
         return paragonService.getAllParagones();
     }
 
