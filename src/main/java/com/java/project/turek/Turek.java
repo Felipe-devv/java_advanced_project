@@ -24,5 +24,9 @@ public class Turek {
     private Double stawkaGodzinowa;
     @Column(name = "status")
     private int status;
-//    private Boolean active;
+
+    @PrePersist
+    protected void onCreate() {
+            status = 1;
+    }
 }

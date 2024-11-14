@@ -7,5 +7,6 @@ import java.util.List;
 
 @Repository
 public interface TurekRepository extends JpaRepository<Turek, Integer> {
+List<Turek> findByStatusNot(int status);
 }
 

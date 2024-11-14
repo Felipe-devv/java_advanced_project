@@ -13,7 +13,7 @@ public class TurekDTO {
     private String nazwisko;
     private String stanowisko;
     private Double stawkaGodzinowa;
-    private int status;
+    private int status =1;
 
     // Konstruktor mapujący encję na DTO
     public TurekDTO(Turek turek) {
