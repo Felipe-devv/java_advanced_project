@@ -18,43 +18,44 @@ public class TurekController {
     }
 
     @GetMapping("/{id}")
-    public TurekDTO getTurekById(@PathVariable Long id) {
+    public TurekDTO getTurekById(@PathVariable int id) {
         return turekService.getTurekById(id);
     }
 
     @PostMapping("/add")
     public String createTurek(@RequestBody TurekDTO turekDTO) {
-        if (turekService.insertTurek(turekDTO.toEntity())) {
+        if (turekService.insertTurek(turekDTO.toEntity())!=null) {
             return "Turek added";
         }
         return "Failed to add Turek";
     }
 
     @PutMapping("/{id}")
-    public String updateTurek(@RequestBody TurekDTO turekDTO, @PathVariable Long id) {
-        if (turekService.updateTurek(turekDTO.toEntity(), id)) {
+    public String updateTurek(@RequestBody TurekDTO turekDTO, @PathVariable int id) {
+        if (turekService.updateTurek(turekDTO.toEntity(), id) != null) {
             return "Turek updated";
         }
         return "Failed to update Turek";
     }
 
     @DeleteMapping("/{id}")
-    public String deleteTurek(@PathVariable Long id) {
-        if (turekService.deleteTurek(id)) {
-            return "Turek deleted";
+    public String deleteTurek(@PathVariable int id) {
+
+        try {
+            turekService.deleteTurek(id);
+            return "Turek został usunięty";
+        } catch (Exception e) {
+            return "Nie udało się usunąć Turka";
         }
-        return "Failed to delete Turek";
+
     }
 
     @PutMapping("/deactivate/{id}")
-    public boolean deactivateTurek(@PathVariable Long id) {
-        return turekService.deactivateTurek(id);
+    public String deactivateTurek(@PathVariable int id) {
+        if (turekService.deactivateTurek(id) != null) {
+            return "Turek updated";
+        }
+        return "Failed to update Turek";
     }
-//    @PutMapping("/deactivate/{id}")
-//    public String deactivateTurek(@PathVariable Long id) {
-//        if (turekService.deactivateTurek(id)) {
-//            return "Turek deactivated";
-//        }
-//        return "Failed to deactivate Turek";
-//    }
+
 }
