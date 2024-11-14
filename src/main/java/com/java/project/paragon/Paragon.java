@@ -1,23 +1,34 @@
 package com.java.project.paragon;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Entity
+@Table(name = "Paragon")
 public class Paragon {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Column(name = "miasto")
     private String miasto;
+
+    @Column(name = "kod_pocztowy")
     private String kodPocztowy;
+
+    @Column(name = "Turek_id")
     private Integer turek;
+
+    @Column(name = "Kebab_id")
     private Integer kebab;
-    private Integer podatek;
+
+    @Column(name = "suma")
     private Double suma ;
 
     public Paragon(String miasto, String kodPocztowy, Integer kebab,Integer turek, Double suma) {
