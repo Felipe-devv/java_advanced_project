@@ -16,12 +16,12 @@ public class KebabRepository {
     private JdbcTemplate jdbcTemplate;
 
     public List<Kebab> getAllKebabs() {
-        String sql = "select * from Kebab";
+        String sql = "select * from Kebab where czyAktywne = 1";
         return jdbcTemplate.query(sql, new KebabRowMapper());
     }
 
     public Kebab getKebabById(int id) {
-        String sql = "select * from Kebab where id = ?";
+        String sql = "select * from Kebab where id = ? and czyAktywne = 1";
         List<Kebab> kebabs = jdbcTemplate.query(sql, new KebabRowMapper(), id);
         if (kebabs.isEmpty()) {
             throw new RuntimeException("Kebab not found");
@@ -30,15 +30,15 @@ public class KebabRepository {
     }
 
     public void insertKebab(AddUpdateKebabRequest kebab) {
-        String sql = "insert into Kebab (nazwa, rozmiar, mieso, sos, cena) values (?, ?, ?, ?, ?)";
-        int rowsAffected = jdbcTemplate.update(sql, kebab.getName(), kebab.getSize(), kebab.getMeat(), kebab.getSauce(), kebab.getPrice());
+        String sql = "insert into Kebab (nazwa, rozmiar, mieso, sos, cena, czyAktywne) values (?, ?, ?, ?, ?, ?)";
+        int rowsAffected = jdbcTemplate.update(sql, kebab.getName(), kebab.getSize(), kebab.getMeat(), kebab.getSauce(), kebab.getPrice(), 1);
         if (rowsAffected == 0) {
             throw new RuntimeException("Failed to insert into Kebab");
         }
     }
 
-    public void updateKebab(AddUpdateKebabRequest kebab,Integer id) {
-        String sql = "update Kebab set nazwa = ?, rozmiar = ?, mieso = ?, sos = ?, cena = ? where id = ?";
+    public void updateKebab(AddUpdateKebabRequest kebab, Integer id) {
+        String sql = "update Kebab set nazwa = ?, rozmiar = ?, mieso = ?, sos = ?, cena = ? where id = ? and czyAktywne = 1";
         int rowsAffected = jdbcTemplate.update(sql, kebab.getName(), kebab.getSize(), kebab.getMeat(), kebab.getSauce(), kebab.getPrice(), id);
         if (rowsAffected == 0) {
             throw new RuntimeException("Failed to update Kebab");
@@ -50,6 +50,14 @@ public class KebabRepository {
         int rowsAffected = jdbcTemplate.update(sql, id);
         if (rowsAffected == 0) {
             throw new RuntimeException("Failed to delete Kebab");
+        }
+    }
+
+    public void deactivateKebab(Integer id) {
+        String sql = "update Kebab set czyAktywne = 0 where id = ?";
+        int rowsAffected = jdbcTemplate.update(sql, id);
+        if (rowsAffected == 0) {
+            throw new RuntimeException("Failed to deactivate Kebab");
         }
     }
 }

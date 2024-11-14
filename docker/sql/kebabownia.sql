@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS `Kebab` (
   `cena` DOUBLE NOT NULL,
   `mieso` VARCHAR(45) NOT NULL,
   `sos` VARCHAR(45) NOT NULL,
+  `czyAktywne` TINYINT(1) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `idKebab_UNIQUE` (`id` ASC) VISIBLE)
 ENGINE = InnoDB;
@@ -39,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `Turek` (
   `nazwisko` VARCHAR(45) NOT NULL,
   `stanowisko` VARCHAR(45) NOT NULL,
   `stawka_godzinowa` VARCHAR(45) NOT NULL,
-  `status` VARCHAR(45) DEFAULT 1,
+  `status` TINYINT(1) DEFAULT 1 NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `idTurek_UNIQUE` (`id` ASC) VISIBLE)
 ENGINE = InnoDB;
