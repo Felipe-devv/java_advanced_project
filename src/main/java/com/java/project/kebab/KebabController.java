@@ -1,6 +1,5 @@
 package com.java.project.kebab;
 
-import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -51,7 +50,7 @@ public class KebabController {
     @PutMapping("/{kebabId}")
     public ResponseEntity<?> putMethodName(@PathVariable Integer kebabId, @RequestBody AddUpdateKebabRequest request) {
         try{
-            kebabService.updateKebab(request, kebabId);
+            kebabService.updateKebab(kebabId, request);
             return ResponseEntity.ok("Kebab updated");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());

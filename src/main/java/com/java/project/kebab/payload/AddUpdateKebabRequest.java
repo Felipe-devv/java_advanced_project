@@ -12,5 +12,5 @@ public class AddUpdateKebabRequest {
     private String size;
     private String meat;
     private String sauce;
-    private double price;
+    private Double price;
 }

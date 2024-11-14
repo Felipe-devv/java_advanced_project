@@ -2,62 +2,15 @@ package com.java.project.kebab;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
+
 import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.java.project.kebab.domain.Kebab;
-import com.java.project.kebab.payload.AddUpdateKebabRequest;
 
 @Repository
-public class KebabRepository {
+public interface KebabRepository extends JpaRepository<Kebab,Integer>{
+
+    List<Kebab> findByIsActiveTrue();
     
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
-
-    public List<Kebab> getAllKebabs() {
-        String sql = "select * from Kebab where czyAktywne = 1";
-        return jdbcTemplate.query(sql, new KebabRowMapper());
-    }
-
-    public Kebab getKebabById(int id) {
-        String sql = "select * from Kebab where id = ? and czyAktywne = 1";
-        List<Kebab> kebabs = jdbcTemplate.query(sql, new KebabRowMapper(), id);
-        if (kebabs.isEmpty()) {
-            throw new RuntimeException("Kebab not found");
-        }
-        return kebabs.get(0);
-    }
-
-    public void insertKebab(AddUpdateKebabRequest kebab) {
-        String sql = "insert into Kebab (nazwa, rozmiar, mieso, sos, cena, czyAktywne) values (?, ?, ?, ?, ?, ?)";
-        int rowsAffected = jdbcTemplate.update(sql, kebab.getName(), kebab.getSize(), kebab.getMeat(), kebab.getSauce(), kebab.getPrice(), 1);
-        if (rowsAffected == 0) {
-            throw new RuntimeException("Failed to insert into Kebab");
-        }
-    }
-
-    public void updateKebab(AddUpdateKebabRequest kebab, Integer id) {
-        String sql = "update Kebab set nazwa = ?, rozmiar = ?, mieso = ?, sos = ?, cena = ? where id = ? and czyAktywne = 1";
-        int rowsAffected = jdbcTemplate.update(sql, kebab.getName(), kebab.getSize(), kebab.getMeat(), kebab.getSauce(), kebab.getPrice(), id);
-        if (rowsAffected == 0) {
-            throw new RuntimeException("Failed to update Kebab");
-        }
-    }
-
-    public void deleteKebab(Integer id) {
-        String sql = "delete from Kebab where id = ?";
-        int rowsAffected = jdbcTemplate.update(sql, id);
-        if (rowsAffected == 0) {
-            throw new RuntimeException("Failed to delete Kebab");
-        }
-    }
-
-    public void deactivateKebab(Integer id) {
-        String sql = "update Kebab set czyAktywne = 0 where id = ?";
-        int rowsAffected = jdbcTemplate.update(sql, id);
-        if (rowsAffected == 0) {
-            throw new RuntimeException("Failed to deactivate Kebab");
-        }
-    }
 }
