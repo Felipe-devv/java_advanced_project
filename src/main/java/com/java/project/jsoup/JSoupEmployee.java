@@ -31,6 +31,7 @@ public class JSoupEmployee {
                 }
 //                Collections.sort(employeeNames);
                 employeeNames.sort(Comparator.comparing(JSoupEmployee::extractLastName));
+
                 departmentEmployees.put(departmentName, employeeNames);
             }
         }

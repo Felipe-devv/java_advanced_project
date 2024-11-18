@@ -20,11 +20,13 @@ public class JSoupController {
         try {
             Map<String, List<String>> departmentEmployees = jSoupEmployee.fetchEmployees();
             return buildResultString(departmentEmployees);
+
         } catch (IOException e) {
             e.printStackTrace();
             return "Failed to fetch employees from the server";
         }
     }
+  
     @GetMapping("/drs")
     public String getEmployeesWithDr() {
         try {
@@ -51,5 +53,6 @@ public class JSoupController {
 
         return result.toString();
     }
+
 
 }
