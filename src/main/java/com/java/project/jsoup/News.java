@@ -1,5 +1,6 @@
 package com.java.project.jsoup;
 public class News {
+
     private String date;
     private String title;
 

@@ -5,16 +5,19 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 
 @Service
 public class JSoupFeed {
     private static final String[] KEYWORDS = {"rektorski", "rektorskie", "dziekański", "dziekańskie", "wolne od zajęć"};
+    private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd.MM.yyyy");
 
     public List<News> fetchNews() throws IOException {
         List<News> newsList = new ArrayList<>();
@@ -22,6 +25,7 @@ public class JSoupFeed {
 
         while (true) {
             String url = "https://weii.pollub.pl/aktualnosci/page" + pageNumber + ".html";
+
             Document doc = Jsoup.connect(url).get();
             Elements newsElements = doc.select("div.news-item");
 
@@ -45,6 +49,14 @@ public class JSoupFeed {
 
             pageNumber++;
         }
+
+        newsList.sort(Comparator.comparing(news -> {
+            try {
+                return DATE_FORMAT.parse(news.getDate());
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
+        }));
 
         return newsList;
     }

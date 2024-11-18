@@ -20,6 +20,7 @@ public class JSoupFeedController {
         try {
             List<News> newsList = jSoupFeed.fetchNews();
             StringBuilder result = new StringBuilder();
+
             for (News news : newsList) {
                 result.append(news.toString()).append("\n");
             }
