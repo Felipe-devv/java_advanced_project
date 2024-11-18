@@ -19,20 +19,37 @@ public class JSoupController {
     public String getEmployees() {
         try {
             Map<String, List<String>> departmentEmployees = jSoupEmployee.fetchEmployees();
-            StringBuilder result = new StringBuilder();
-
-            for (Map.Entry<String, List<String>> entry : departmentEmployees.entrySet()) {
-                result.append(entry.getKey()).append("\n");
-                for (String employee : entry.getValue()) {
-                    result.append(" - ").append(employee).append("\n");
-                }
-                result.append("\n"); 
-            }
-
-            return result.toString();
+            return buildResultString(departmentEmployees);
         } catch (IOException e) {
             e.printStackTrace();
             return "Failed to fetch employees from the server";
         }
     }
+    @GetMapping("/drs")
+    public String getEmployeesWithDr() {
+        try {
+            Map<String, List<String>> departmentEmployees = jSoupEmployee.fetchEmployeesWithDr();
+            return buildResultString(departmentEmployees);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "Failed to fetch employees with dr from the server";
+        }
+    }
+
+
+    private String buildResultString(Map<String, List<String>> departmentEmployees)
+    {
+        StringBuilder result = new StringBuilder();
+
+        for (Map.Entry<String, List<String>> entry : departmentEmployees.entrySet()) {
+            result.append(entry.getKey()).append("\n");
+            for (String employee : entry.getValue()) {
+                result.append(" - ").append(employee).append("\n");
+            }
+            result.append("\n");
+        }
+
+        return result.toString();
+    }
+
 }
