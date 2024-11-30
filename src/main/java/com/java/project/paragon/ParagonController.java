@@ -1,12 +1,14 @@
 package com.java.project.paragon;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/paragones")
+@PreAuthorize("hasAnyRole('szef','regular')")
 public class ParagonController {
 
     @Autowired
