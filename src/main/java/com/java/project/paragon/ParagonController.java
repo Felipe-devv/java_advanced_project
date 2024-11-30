@@ -1,5 +1,6 @@
 package com.java.project.paragon;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -9,10 +10,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/paragones")
 @PreAuthorize("hasAnyRole('szef','regular')")
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class ParagonController {
 
-    @Autowired
-    private ParagonService paragonService;
+
+    private final ParagonService paragonService;
 
     @GetMapping("/all")
     public List<ParagonDTO> getParagons() {
