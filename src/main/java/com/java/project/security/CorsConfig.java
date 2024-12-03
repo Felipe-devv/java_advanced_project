@@ -14,12 +14,12 @@ public class CorsConfig /*implements WebMvcConfigurer*/ {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**")  // pozwól na wszystkie ścieżki
+                registry.addMapping("/**")
                         .allowedOriginPatterns("*")
-//                        .allowedOrigins("http://localhost:4200")  // zezwól na pochodzenie z Angulara (możesz dodać inne, jeśli potrzebujesz)
-                        .allowedMethods("GET", "POST", "PUT","PATCH", "DELETE")  // metody HTTP, które chcesz zezwolić
-                        .allowedHeaders("*")  // zezwól na wszystkie nagłówki
-                        .allowCredentials(true);  // jeśli potrzebujesz obsługi ciasteczek
+//                        .allowedOrigins("http://localhost:4200")
+                        .allowedMethods("GET", "POST", "PUT","PATCH", "DELETE")
+                        .allowedHeaders("*")
+                        .allowCredentials(true);
             }
         };
     }
