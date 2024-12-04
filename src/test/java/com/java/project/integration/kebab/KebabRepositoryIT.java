@@ -1,7 +1,7 @@
 package com.java.project.integration.kebab;
 
+import com.java.project.kebab.Kebab;
 import com.java.project.kebab.KebabRepository;
-import com.java.project.kebab.domain.Kebab;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

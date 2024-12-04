@@ -2,10 +2,10 @@ package com.java.project.integration.kebab;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.java.project.kebab.AddUpdateKebabRequest;
+import com.java.project.kebab.Kebab;
+import com.java.project.kebab.KebabDTO;
 import com.java.project.kebab.KebabRepository;
-import com.java.project.kebab.domain.Kebab;
-import com.java.project.kebab.domain.KebabDTO;
-import com.java.project.kebab.payload.AddUpdateKebabRequest;
 
 import jakarta.transaction.Transactional;
 

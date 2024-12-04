@@ -5,10 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.java.project.kebab.domain.Kebab;
-import com.java.project.kebab.domain.KebabDTO;
-import com.java.project.kebab.payload.AddUpdateKebabRequest;
-
 import lombok.RequiredArgsConstructor;
 
 @Service
