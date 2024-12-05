@@ -30,18 +30,22 @@ public class ParagonController {
     @PostMapping("")
     public String createParagon(@RequestBody ParagonPOJO paragon) {
 
-        if(paragonService.insertParagon(paragon)!=null)
-        {
+        try{
+            paragonService.insertParagon(paragon);
             return "Paragon dodany";
         }
-        return "Nie udało się dodać paragonu";
+         catch(Exception e){
+             return "Nie udało się dodać paragonu";
+         }
     }
 
     @PutMapping("/{paragonId}")
     public String updateParagon( @RequestBody ParagonPOJO paragon,@PathVariable int paragonId) {
 
-        if(paragonService.updateParagon(paragon,paragonId)!=null){return "Paragon zaaktualizowany";}
-        return "Nie udało się zaaktualizować paragonu";
+       try{return "Paragon zaaktualizowany";}
+       catch(Exception e) {
+           return "Nie udało się zaaktualizować paragonu";
+       }
     }
 
     @DeleteMapping("/{paragonId}")
@@ -51,7 +55,7 @@ public class ParagonController {
             paragonService.deleteParagon(paragonId);
             return "Paragon usunięty";
         } catch (Exception e) {
-        return "Nie udało się usunąć paragonu";
+            return "Nie udało się usunąć paragonu";
         }
     }
 

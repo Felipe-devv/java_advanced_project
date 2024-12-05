@@ -25,16 +25,16 @@ public class ParagonServiceImpl implements  ParagonService{
         return new ParagonDTO(paragonRepository.findById(paragonId).orElseThrow(()->new RuntimeException("Paragon not found")));
     }
 
-    public Paragon insertParagon(ParagonPOJO paragon) {
+    public Paragon insertParagon(ParagonPOJO paragon){
 
-        return paragonRepository.saveAndFlush(
-                Paragon.builder()
-                        .kebab(paragon.getKebab())
-                        .turek(paragon.getTurek())
-                        .suma(paragon.getSuma())
-                        .kodPocztowy(paragon.getKodPocztowy())
-                        .miasto(paragon.getMiasto())
-                        .build());
+            return paragonRepository.saveAndFlush(
+                    Paragon.builder()
+                            .kebab(paragon.getKebab())
+                            .turek(paragon.getTurek())
+                            .suma(paragon.getSuma())
+                            .kodPocztowy(paragon.getKodPocztowy())
+                            .miasto(paragon.getMiasto())
+                            .build());
     }
 
     public Paragon updateParagon(ParagonPOJO paragon,int paragonId) {
