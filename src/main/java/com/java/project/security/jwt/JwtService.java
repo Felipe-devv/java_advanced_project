@@ -42,14 +42,10 @@ public class JwtService {
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis()+ 1000L *3600*24*30))//24h/30dni
-//                .setExpiration(new Date(System.currentTimeMillis()+getExpirationTime()))
                 .signWith(getSignInKey(),SignatureAlgorithm.HS256)
                 .compact();
     }
 
-//    public long getExpirationTime() {
-//        return jwtExpiration;
-//    }
 
     private String buildToken(
             Map<String, Object> extraClaims,
