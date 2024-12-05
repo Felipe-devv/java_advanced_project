@@ -25,18 +25,22 @@ public class TurekController {
 
     @PostMapping("/add")
     public String createTurek(@RequestBody TurekDTO turekDTO) {
-        if (turekService.insertTurek(turekDTO.toEntity())!=null) {
+        try {
+            turekService.insertTurek(turekDTO.toEntity());
             return "Turek added";
+        } catch (Exception e) {
+            return "Failed to add Turek: " + e.getMessage();
         }
-        return "Failed to add Turek";
     }
 
     @PutMapping("/{id}")
     public String updateTurek(@RequestBody TurekDTO turekDTO, @PathVariable int id) {
-        if (turekService.updateTurek(turekDTO.toEntity(), id) != null) {
+        try {
+            turekService.updateTurek(turekDTO.toEntity(), id);
             return "Turek updated";
+        } catch (Exception e) {
+            return "Failed to update Turek: " + e.getMessage();
         }
-        return "Failed to update Turek";
     }
 
     @DeleteMapping("/{id}")
@@ -48,15 +52,15 @@ public class TurekController {
         } catch (Exception e) {
             return "Nie udało się usunąć Turka";
         }
-
     }
 
     @PutMapping("/deactivate/{id}")
     public String deactivateTurek(@PathVariable int id) {
-        if (turekService.deactivateTurek(id) != null) {
+        try {
+            turekService.deactivateTurek(id);
             return "Turek updated";
+        } catch (Exception e) {
+            return "Failed to update Turek: " + e.getMessage();
         }
-        return "Failed to update Turek";
     }
-
 }

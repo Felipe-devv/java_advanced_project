@@ -16,7 +16,7 @@ public class TurekServiceImpl implements TurekService {
     }
 
     @Override
-    public List<TurekDTO> getAllTureks() {
+    public List<TurekDTO> getAllTureks(){
         var turekList = turekRepository.findByStatusNot(0);
         return turekList.stream().map(TurekDTO::new).toList();
     }
@@ -46,7 +46,6 @@ public class TurekServiceImpl implements TurekService {
         if (turek.getStatus() == 0) {
             throw new RuntimeException("Turek is inactive");
         }
-
         return turekRepository.save(existingTurek);
     }
 
