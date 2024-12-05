@@ -95,17 +95,18 @@ void testAddTurek_Success() throws Exception {
 }
 
     //aktualizacja:
+
     @Test
     void testUpdateTurek_Success() throws Exception {
         String updatedTurekJson = """
-        {
-            "imie": "Jan",
-            "nazwisko": "Kowalski",
-            "stanowisko": "Senior Developer",
-            "stawkaGodzinowa": 35.0,
-            "status": 1
-        }
-    """;
+                {
+                    "imie": "Jan",
+                    "nazwisko": "Kowalski",
+                    "stanowisko": "Senior Developer",
+                    "stawkaGodzinowa": 35.0,
+                    "status": 1
+                }
+            """;
 
         mockMvc.perform(put("/turek/1")
                         .header(HttpHeaders.AUTHORIZATION, JWT)
@@ -114,6 +115,8 @@ void testAddTurek_Success() throws Exception {
                 .andExpect(status().isOk())
                 .andExpect(content().string("Turek updated"));
     }
+
+
 //usuwaie:
 @Test
 void testDeleteTurek_Success() throws Exception {
