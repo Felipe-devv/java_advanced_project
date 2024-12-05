@@ -2,8 +2,6 @@ package com.java.project.kebab;
 
 import org.springframework.jdbc.core.RowMapper;
 
-import com.java.project.kebab.domain.Kebab;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 

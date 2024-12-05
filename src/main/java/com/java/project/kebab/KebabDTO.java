@@ -1,4 +1,4 @@
-package com.java.project.kebab.domain;
+package com.java.project.kebab;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

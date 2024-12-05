@@ -1,4 +1,4 @@
-package com.java.project.kebab.payload;
+package com.java.project.kebab;
 
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;

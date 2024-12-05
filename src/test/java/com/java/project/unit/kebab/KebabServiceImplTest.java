@@ -19,11 +19,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import com.java.project.kebab.AddUpdateKebabRequest;
+import com.java.project.kebab.Kebab;
+import com.java.project.kebab.KebabDTO;
 import com.java.project.kebab.KebabRepository;
 import com.java.project.kebab.KebabServiceImpl;
-import com.java.project.kebab.domain.Kebab;
-import com.java.project.kebab.domain.KebabDTO;
-import com.java.project.kebab.payload.AddUpdateKebabRequest;
 
 public class KebabServiceImplTest {
 
